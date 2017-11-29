@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -p RM
+#SBATCH -t 1:00:00
+#SBATCH --mem 4
+
+# echo commands to stdout 
+set -x
+# create working directory
+export prefix=/pylon2/ca4s8ip/yudelson/pittuohmooc
+export prefixR=/pylon1/ca4s8ip/yudelson/pittuohmooc
+cost="1.0"
+costtag="_C"$cost
+mkdir -p ${prefixR}/data/ALL_liblineardata
+mkdir -p ${prefixR}/model
+mkdir -p ${prefixR}/predict
+mkdir -p ${prefixR}/out
+# copy input file from your pylon2 directory to the working directory
+cp ${prefix}/data/ALL_liblineardata/ALL_allsubmit_llTFMcountPS4.txt ${prefixR}/data/ALL_liblineardata/ALL_allsubmit_llTFMcountPS4.txt
+cp -R -n ${prefix}/data/ALL_voc ${prefixR}/data/
+# run executable
+./code/modelPSC_TFMcountPS4_fit.sh
+# copy output file to persistent space
+mv ${prefixR}/predict/ALL_allsubmit_llTFMcountPS4_predict${costtag}.txt ${prefix}/predict/ALL_allsubmit_llTFMcountPS4_predict${costtag}.txt
+mv ${prefixR}/model/ALL_allsubmit_llTFMcountPS4_model${costtag}.txt ${prefix}/model/ALL_allsubmit_llTFMcountPS4_model${costtag}.txt
+mv ${prefixR}/out/ALL_allsubmit_llTFMcountPS4_out${costtag}.txt ${prefix}/out/ALL_allsubmit_llTFMcountPS4_out${costtag}.txt
+# cleanup
+# rm -rf /pylon1/ca4s8ip/yudelson/pittuohmooc/
+
+
+
+

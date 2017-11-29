@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+*/**/.DS_Store
+data
+model
+predict
+bin
+pittuohmooc.Rproj
+result

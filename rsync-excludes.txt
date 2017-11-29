@@ -1,0 +1,7 @@
+.*
+pittuohmooc.Rproj
+rsync-excludes.txt
+*.sh
+code
+.git
+format*.txt
