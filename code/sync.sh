@@ -17,7 +17,6 @@
 # Columbus
 #
 
-# password to columbus machine is d3v3l0p3rs
 
 
 # TO Columbus rsync (for Michael's macbookpro)
