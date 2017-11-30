@@ -5,3 +5,4 @@ rsync-excludes.txt
 code
 .git
 format*.txt
+paper

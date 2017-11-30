@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#SBATCH -N 1
+#SBATCH -p RM
+#SBATCH -t 72:00:00
+#SBATCH --mem 4
+
+# echo commands to stdout 
+set -x
+# create working directory
+export prefix=/pylon2/ca4s8ip/yudelson/pittuohmooc
+export prefixR=/pylon1/ca4s8ip/yudelson/pittuohmooc
+
+# copy input file from your pylon2 directory to the working directory
+declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
+for dataset in ${datasets[@]} # for all datasets
+do
+	cp -u ${prefix}/data/${dataset}_allsubmitABCD.txt ${prefixR}/data/${dataset}_allsubmitABCD.txt
+	cp -u ${prefix}/data/${dataset}_problems.txt ${prefixR}/data/${dataset}_problems.txt
+done
+cp -R -u ${prefix}/data/fc_rfe/ ${prefixR}/data/
+# run executable
+./code/conceptFilter_rfe_job_step2.sh
+# copy output file to persistent space
+# mv ${prefixR}/predict/ALL_allsubmit_llafmAwpLN_predict.txt ${prefix}/predict/ALL_allsubmit_llafmAwpLN_predict.txt
+# mv ${prefixR}/model/ALL_allsubmit_llafmAwpLN_model.txt ${prefix}/model/ALL_allsubmit_llafmAwpLN_model.txt
+# mv ${prefixR}/out/ALL_allsubmit_llafmAwpLN_out.txt ${prefix}/out/ALL_allsubmit_llafmAwpLN_out.txt
+# cleanup
+# rm -rf /pylon1/ca4s8ip/yudelson/pittuohmooc/
