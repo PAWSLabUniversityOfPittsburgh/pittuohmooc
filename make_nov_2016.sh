@@ -43,8 +43,6 @@ rsync -avhW --progress --update --exclude-from=/Users/roya/Desktop/ProgMOOC/rsyn
 rsync -avhW --progress --update --exclude-from=/Users/roya/Desktop/ProgMOOC/rsync-excludes.txt --dry-run developers@columbus.exp.sis.pitt.edu:/home/developers/ProgMOOC/ /Users/roya/Desktop/ProgMOOC/
 
 
-# password to columbus machine is d3v3l0p3rs
-
 # copy from PSC to PAWS Comp 2
 scp -r yudelson@bridges.psc.xsede.org:/home/yudelson/pittuohmooc /home/myudelson/
 
