@@ -29,11 +29,15 @@ Files and Directory Structure.
 
 * `make_nov_2017.sh` – the over-arching make file;
 * `./code/` - code and scripts;
-	* `./code/preprocess.sh` - make file for pre-processing the source data
-	* `./code/preprocess/**` - dependent code for pre-processing the source data
+	* `./code/sync.sh` - instructions for syncing data part of the project;
+	* `./code/preprocess.sh` - make file for pre-processing the source data;
+	* `./code/preprocess/**` - dependent code for pre-processing the source data;
+	* `./code/behavior.sh` - make file for the behavior markup the preprocessed data;
+	* `./code/behavior/**` - dependent code for the behavior markup the preprocessed data;
 * `./data/` - source and derived data;
 	* `./data/source` - source data logs;
 	* `./data/preprocess` - preprocessed data to be used in the analyses;
+	* `./data/behavior` - behavior markup data;
 * `./bin/` - compiled code and libraries;
 * `./model/` - fit models;
 * `./predict/` - model predictions;
