@@ -19,12 +19,14 @@
 # Preprocess data
 #
 ./code/preprocess.sh
-
+# OR, via batch command
+./code/preprocess.sh >> temp/temp_preprocess.txt 2>&1
+# Last ran 2017-12-01 11:40
 
 #
 # Behaviors markup
 #
-./code/nehavior.sh
+./code/behavior.sh
 
 
 

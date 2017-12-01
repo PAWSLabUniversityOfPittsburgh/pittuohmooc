@@ -1,5 +1,9 @@
 # PittUoHMOOC. University of Pittsburgh and University of Helsinki Java MOOC Data Analysis
 
+# Composition-Completion Coding Behaviors*
+
+_*_ thiss is the new bradning that clarifies the overly-loaded term of _behavior_
+
 Peter Brusilovsky, Ph.D. ([peterb.pitt.edu](mailto:peterb.pitt.edu)), [http://brusilovsky.org](http://brusilovsky.org)
 
 Michael Yudelson, Ph.D. ([yudelson@andrew.cmu.edu](mailto:yudelson@andrew.cmu.edu),[michael.yudelson@act.org](mailto:michael.yudelson@act.org)), [http://yudelson.info](http://yudelson.info)

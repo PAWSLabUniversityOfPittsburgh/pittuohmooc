@@ -17,7 +17,8 @@
 # Columbus
 #
 
-
+# connect to columbus
+ssh developers@columbus.exp.sis.pitt.edu:/home/developers/ProgMOOC/
 
 # TO Columbus rsync (for Michael's macbookpro)
 rsync -avhW --progress --update --exclude-from ./rsync-excludes.txt --dry-run /Users/myudelson/Documents/pitt/pittuohmooc/ developers@columbus.exp.sis.pitt.edu:/home/developers/ProgMOOC/
