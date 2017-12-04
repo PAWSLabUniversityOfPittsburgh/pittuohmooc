@@ -1,0 +1,42 @@
+/bin/bash: line 2: ./code/preprocess.sh: Permission denied
+/bin/bash: line 2: ./code/preprocess.sh: Permission denied
+s2014-ohpe.csv
+351073 data/preprocess/s2014-ohpe-snapshot-out_tmp.csv
+133370 data/preprocess/s2014-ohpe_all.txt
+107143 data/preprocess/s2014-ohpe_allsubmit.txt
+s2015-ohpe.csv
+298992 data/preprocess/s2015-ohpe-snapshot-out_tmp.csv
+115560 data/preprocess/s2015-ohpe_all.txt
+92591 data/preprocess/s2015-ohpe_allsubmit.txt
+k2015-ohjelmointi.csv
+910009 data/preprocess/k2015-mooc-snapshot-out_tmp.csv
+338685 data/preprocess/k2015-mooc_all.txt
+274456 data/preprocess/k2015-mooc_allsubmit.txt
+k2014-mooc.csv
+1122475 data/preprocess/k2014-mooc-snapshot-out_tmp.csv
+418890 data/preprocess/k2014-mooc_all.txt
+340206 data/preprocess/k2014-mooc_allsubmit.txt
+s2014-ohpe
+true__-1 225
+s2015-ohpe
+true__-1 202
+k2015-mooc
+true__-1 547
+k2014-mooc
+true__-1 679
+data/preprocess/s2014-ohpe_all.txt
+data/preprocess/s2014-ohpe_allsubmit.txt
+data/preprocess/s2015-ohpe_all.txt
+data/preprocess/s2015-ohpe_allsubmit.txt
+data/preprocess/k2015-mooc_all.txt
+data/preprocess/k2015-mooc_allsubmit.txt
+data/preprocess/k2014-mooc_all.txt
+data/preprocess/k2014-mooc_allsubmit.txt
+data/preprocess/s2014-ohpe_all.txt
+data/preprocess/s2014-ohpe_allsubmit.txt
+data/preprocess/s2015-ohpe_all.txt
+data/preprocess/s2015-ohpe_allsubmit.txt
+data/preprocess/k2015-mooc_all.txt
+data/preprocess/k2015-mooc_allsubmit.txt
+data/preprocess/k2014-mooc_all.txt
+data/preprocess/k2014-mooc_allsubmit.txt

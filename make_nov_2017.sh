@@ -31,10 +31,19 @@
 
 
 
+#
+# Vocabularies and Concept Differences
+#
 
-
-
-
+# Create vocabularies of students, items, and concepts (various concept list types).
+# Concept list types
+# - A - all concepts in the snapshot
+# - B - only new concepts in the snapshot
+# - C - new concepts in the snapshot as well as deletions
+# - D - all concepts in the snapshot as well as deletions
+./code/vocab_concept.sh
+# OR, via batch command
+./code/vocab_concept.sh >> temp/temp_vocab_concept.txt 2>&1
 
 
 
@@ -49,78 +58,7 @@
 
 
 
-#
-# Prepare data for modeling:
-# - create vocabularies for students, skills, items ./data/${dataset}_voc_{student|skill|item}.txt
 
-# uncompress
-declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
-for dataset in ${datasets[@]} # for all dataset names in datasets array
-do
-	tar -xvjf data/${dataset}_allsubmit.tar.bz 
-done
-
-# Student and item vocabularies first
-declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
-for dataset in ${datasets[@]}
-do
-    rm -rf ./data/${dataset}_voc
-    mkdir ./data/${dataset}_voc
-    export vocstu=./data/${dataset}_voc/${dataset}_allsubmit_voc_student.txt
-    export vocite=./data/${dataset}_voc/${dataset}_allsubmit_voc_item.txt
-    awk -F";" -f ./code/all2studitemvoc.awk ./data/${dataset}_allsubmit.txt
-    wc -l ./data/${dataset}_voc/${dataset}_allsubmit_voc_student.txt
-    wc -l ./data/${dataset}_voc/${dataset}_allsubmit_voc_item.txt
-done # all datasets
-#      220 ./data/s2014-ohpe_voc/s2014-ohpe_allsubmit_voc_student.txt
-#      104 ./data/s2014-ohpe_voc/s2014-ohpe_allsubmit_voc_item.txt
-#      180 ./data/s2015-ohpe_voc/s2015-ohpe_allsubmit_voc_student.txt
-#      116 ./data/s2015-ohpe_voc/s2015-ohpe_allsubmit_voc_item.txt
-#      613 ./data/k2015-mooc_voc/k2015-mooc_allsubmit_voc_student.txt
-#      116 ./data/k2015-mooc_voc/k2015-mooc_allsubmit_voc_item.txt
-#      852 ./data/k2014-mooc_voc/k2014-mooc_allsubmit_voc_student.txt
-#       97 ./data/k2014-mooc_voc/k2014-mooc_allsubmit_voc_item.txt
-
-# Add B and C sets of concepts at the end
-declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
-for dataset in ${datasets[@]}
-do
-    fin=./data/${dataset}_allsubmit.txt
-    fout=./data/${dataset}_allsubmitABCD.txt
-    fouttar=./data/${dataset}_allsubmitABCD.tar.bz
-    awk -F";" -f ./code/dataAtoABCD.awk "${fin}" > "${fout}"
-    tar -cvjf "${fouttar}" "${fout}"
-done # all datasets
-
-#
-# create vocabularies of concepts
-#
-declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
-for dataset in ${datasets[@]}
-do
-    export vocski=./data/${dataset}_voc/${dataset}_allsubmit_voc_skill
-    awk -F";" -f ./code/all2skillvoc.awk ./data/${dataset}_allsubmitABCD.txt
-    wc -l ./data/${dataset}_voc/${dataset}_allsubmit_voc_skillA.txt
-    wc -l ./data/${dataset}_voc/${dataset}_allsubmit_voc_skillB.txt
-    wc -l ./data/${dataset}_voc/${dataset}_allsubmit_voc_skillC.txt
-    wc -l ./data/${dataset}_voc/${dataset}_allsubmit_voc_skillD.txt
-done # all datasets
-#      136 ./data/s2014-ohpe_voc/s2014-ohpe_allsubmit_voc_skillA.txt # s2014-ohpe
-#      136 ./data/s2014-ohpe_voc/s2014-ohpe_allsubmit_voc_skillB.txt
-#      270 ./data/s2014-ohpe_voc/s2014-ohpe_allsubmit_voc_skillC.txt
-#      278 ./data/s2014-ohpe_voc/s2014-ohpe_allsubmit_voc_skillD.txt
-#      135 ./data/s2015-ohpe_voc/s2015-ohpe_allsubmit_voc_skillA.txt # s2015-ohpe
-#      135 ./data/s2015-ohpe_voc/s2015-ohpe_allsubmit_voc_skillB.txt
-#      269 ./data/s2015-ohpe_voc/s2015-ohpe_allsubmit_voc_skillC.txt
-#      268 ./data/s2015-ohpe_voc/s2015-ohpe_allsubmit_voc_skillD.txt
-#      151 ./data/k2015-mooc_voc/k2015-mooc_allsubmit_voc_skillA.txt # k2015-mooc
-#      151 ./data/k2015-mooc_voc/k2015-mooc_allsubmit_voc_skillB.txt
-#      301 ./data/k2015-mooc_voc/k2015-mooc_allsubmit_voc_skillC.txt
-#      302 ./data/k2015-mooc_voc/k2015-mooc_allsubmit_voc_skillD.txt
-#      147 ./data/k2014-mooc_voc/k2014-mooc_allsubmit_voc_skillA.txt # k2014-mooc
-#      147 ./data/k2014-mooc_voc/k2014-mooc_allsubmit_voc_skillB.txt
-#      293 ./data/k2014-mooc_voc/k2014-mooc_allsubmit_voc_skillC.txt
-#      294 ./data/k2014-mooc_voc/k2014-mooc_allsubmit_voc_skillD.txt
 
 #
 # Concept filtering @Roya
