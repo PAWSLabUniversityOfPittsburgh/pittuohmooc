@@ -1,7 +1,8 @@
 #
-# All two columns of concepts for B - just changes from previous submit
-# and C - changes taking into account removals.
-# Concepts are in column 
+# Create, in addition to all concepts (version A)
+# - columns of concepts changes from previous submit (version B)
+# - columns of concepts changes from previous submit including deletions (version C)
+# - all concepts plus deletions from previous (version D)
 #
 
 # GP - student, concepts array for a problem, keeps the last copy of concepts
@@ -63,5 +64,7 @@ BEGIN{}
 		}
 	}
 	G[g,p] = k;
-	print $0";"B";"C";"D;
+	print B";"C";"D;
+	# from previous version that added BCD columns to the full file (with behaviors)
+	# this script is different by not printing out '$0";"' in the beginning
 }

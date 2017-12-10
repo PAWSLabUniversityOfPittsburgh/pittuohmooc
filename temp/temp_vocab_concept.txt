@@ -1,0 +1,28 @@
+220 ./data/vocab_concept/s2014-ohpe/s2014-ohpe_allsubmit_voc_student.txt
+104 ./data/vocab_concept/s2014-ohpe/s2014-ohpe_allsubmit_voc_item.txt
+180 ./data/vocab_concept/s2015-ohpe/s2015-ohpe_allsubmit_voc_student.txt
+116 ./data/vocab_concept/s2015-ohpe/s2015-ohpe_allsubmit_voc_item.txt
+613 ./data/vocab_concept/k2015-mooc/k2015-mooc_allsubmit_voc_student.txt
+116 ./data/vocab_concept/k2015-mooc/k2015-mooc_allsubmit_voc_item.txt
+852 ./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmit_voc_student.txt
+97 ./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmit_voc_item.txt
+./data/vocab_concept/s2014-ohpe/s2014-ohpe_allsubmitBCD.txt
+./data/vocab_concept/s2015-ohpe/s2015-ohpe_allsubmitBCD.txt
+./data/vocab_concept/k2015-mooc/k2015-mooc_allsubmitBCD.txt
+./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmitBCD.txt
+136 ./data/vocab_concept/s2014-ohpe/s2014-ohpe_allsubmit_voc_skillA.txt
+136 ./data/vocab_concept/s2014-ohpe/s2014-ohpe_allsubmit_voc_skillB.txt
+270 ./data/vocab_concept/s2014-ohpe/s2014-ohpe_allsubmit_voc_skillC.txt
+278 ./data/vocab_concept/s2014-ohpe/s2014-ohpe_allsubmit_voc_skillD.txt
+135 ./data/vocab_concept/s2015-ohpe/s2015-ohpe_allsubmit_voc_skillA.txt
+135 ./data/vocab_concept/s2015-ohpe/s2015-ohpe_allsubmit_voc_skillB.txt
+269 ./data/vocab_concept/s2015-ohpe/s2015-ohpe_allsubmit_voc_skillC.txt
+268 ./data/vocab_concept/s2015-ohpe/s2015-ohpe_allsubmit_voc_skillD.txt
+151 ./data/vocab_concept/k2015-mooc/k2015-mooc_allsubmit_voc_skillA.txt
+151 ./data/vocab_concept/k2015-mooc/k2015-mooc_allsubmit_voc_skillB.txt
+301 ./data/vocab_concept/k2015-mooc/k2015-mooc_allsubmit_voc_skillC.txt
+302 ./data/vocab_concept/k2015-mooc/k2015-mooc_allsubmit_voc_skillD.txt
+147 ./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmit_voc_skillA.txt
+147 ./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmit_voc_skillB.txt
+293 ./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmit_voc_skillC.txt
+294 ./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmit_voc_skillD.txt

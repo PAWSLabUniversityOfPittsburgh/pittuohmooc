@@ -19,11 +19,11 @@
 # - D - all concepts in the snapshot as well as deletions
 
 # uncompress
-declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
-for dataset in ${datasets[@]} # for all dataset names in datasets array
-do
-	tar -xvjf data/preprocess/${dataset}_allsubmit.tar.bz 
-done
+# declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
+# for dataset in ${datasets[@]} # for all dataset names in datasets array
+# do
+# 	tar -xvjf data/preprocess/${dataset}_allsubmit.tar.bz 
+# done
 
 # Student and item vocabularies first
 declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
@@ -33,7 +33,12 @@ do
     mkdir ./data/vocab_concept/${dataset}
     export vocstu=./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_student.txt
     export vocite=./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_item.txt
-    awk -F";" -f ./code/vocab_concept/all2studitemvoc.awk ./data/preprocess/${dataset}_allsubmit.txt
+	# item voc vocabulary
+	export col=4
+	awk -F";" -f ./code/vocab_concept/createSimpleVoc.awk ./data/preprocess/${dataset}_allsubmit.txt > ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_item.txt
+	# student vocabulary
+	export col=2
+	awk -F";" -f ./code/vocab_concept/createSimpleVoc.awk ./data/preprocess/${dataset}_allsubmit.txt > ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_student.txt
     wc -l ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_student.txt
     wc -l ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_item.txt
 done # all datasets
@@ -47,14 +52,14 @@ done # all datasets
 #  97 ./data/vocab_concept/k2014-mooc/k2014-mooc_allsubmit_voc_item.txt
  
 
-# Add B, C, and D sets of concepts at the end
+# Create B, C, and D sets of concepts as a 3-column addition file
 declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
 for dataset in ${datasets[@]}
 do
     fin=./data/preprocess/${dataset}_allsubmit.txt
-    fout=./data/vocab_concept/${dataset}/${dataset}_allsubmitABCD.txt
-    fouttar=./data/vocab_concept/${dataset}/${dataset}_allsubmitABCD.tar.bz
-    awk -F";" -f ./code/vocab_concept/dataAtoABCD.awk "${fin}" > "${fout}"
+    fout=./data/vocab_concept/${dataset}/${dataset}_allsubmitBCD.txt
+    fouttar=./data/vocab_concept/${dataset}/${dataset}_allsubmitBCD.tar.bz
+    awk -F";" -f ./code/vocab_concept/dataAtoBCD.awk "${fin}" > "${fout}"
     tar -cvjf "${fouttar}" "${fout}"
 done # all datasets
 
@@ -65,7 +70,21 @@ declare -a datasets=("s2014-ohpe" "s2015-ohpe" "k2015-mooc" "k2014-mooc")
 for dataset in ${datasets[@]}
 do
     export vocski=./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skill
-    awk -F";" -f ./code/vocab_concept/all2skillvoc.awk ./data/vocab_concept/${dataset}/${dataset}_allsubmitABCD.txt
+#     pre=./data/preprocess/${dataset}_allsubmit.txt
+#     bcd=./data/vocab_concept/${dataset}/${dataset}_allsubmitBCD.txt
+# 	awk -F";" -f ./code/vocab_concept/all2skillvoc.awk <(paste -d";" ${pre} ${bcd})
+    # A skill vocabulary
+    export col=17
+    awk -F";" -f ./code/vocab_concept/createListedVoc.awk ./data/preprocess/${dataset}_allsubmit.txt > ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skillA.txt
+    # B skill vocabulary
+    export col=1
+    awk -F";" -f ./code/vocab_concept/createListedVoc.awk ./data/vocab_concept/${dataset}/${dataset}_allsubmitBCD.txt > ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skillB.txt
+    # C skill vocabulary
+    export col=2
+    awk -F";" -f ./code/vocab_concept/createListedVoc.awk ./data/vocab_concept/${dataset}/${dataset}_allsubmitBCD.txt > ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skillC.txt
+    # D skill vocabulary
+    export col=3
+    awk -F";" -f ./code/vocab_concept/createListedVoc.awk ./data/vocab_concept/${dataset}/${dataset}_allsubmitBCD.txt > ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skillD.txt
     wc -l ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skillA.txt
     wc -l ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skillB.txt
     wc -l ./data/vocab_concept/${dataset}/${dataset}_allsubmit_voc_skillC.txt
